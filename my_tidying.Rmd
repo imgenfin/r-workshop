@@ -1,0 +1,23 @@
+---
+title: "my_tidying"
+author: "Ankit Sharma"
+date: "22/06/2021"
+output: html_document 
+---
+
+library(tidyverse)
+library(janitor)
+library(here)
+library(readxl)
+
+inverts <- read_excel(here("data", "inverts.xlsx"))
+
+```{r}
+View(inverts)
+names(inverts)
+summary(inverts)
+```
+ 
+
+
+
