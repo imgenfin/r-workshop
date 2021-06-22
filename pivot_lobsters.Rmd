@@ -9,8 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
-```{r}
 library(tidyverse)
 library(readxl)
 library(here)
@@ -28,17 +26,28 @@ lobsters %>%
 group_by(site, year) %>%
 summarize(count_by_siteyear = n())
 
+
+ 
 lobsters %>%
 group_by(site, year) %>%
 summarize(count_by_siteyear = n(), mean_size_mm = mean(size_mm))
+ 
 
+
+ 
 siteyear_summary <- lobsters %>%
 group_by(site, year) %>%
 summarize(count_by_siteyear = n(),mean_size_mm = mean(size_mm, na.rm=TRUE), sd_size_mm = sd(size_mm, na.rm=TRUE))
+ 
 
+
+ 
 siteyear_summary %>%
 kable ()
+ 
 
+
+ 
 siteyear_summary <- lobsters %>%
 group_by(site, year) %>%
 summarize(count_by_siteyear = n(),
@@ -52,25 +61,26 @@ ggplot(data = siteyear_summary, aes(x = year, y = count_by_siteyear, color = sit
   
 ggsave(here("figures", "lobsters-line.png"))
 
+
 ggplot(siteyear_summary, aes(x = year, y = median_size_mm)) +
   geom_col() +
   facet_wrap(~site)
 ggsave(here("figures", "lobsters-col.png"))
 
-
 lobsters %>%
 count(site,year)
+ 
 
 lobsters %>%
   mutate(size_m = size_mm / 1000)
-  
+
+
 lobsters_detailed <- lobsters %>%
   mutate(size_m = size_mm / 1000, 
          millenia = 2000,
          observer = "Allison Horst")
-         
+
 lobsters_detailed %>%
   select(date, site, size_m)
-```
 
 
