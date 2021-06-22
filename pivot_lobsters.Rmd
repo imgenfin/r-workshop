@@ -9,6 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+```{r}
 library(tidyverse)
 library(readxl)
 library(here)
@@ -69,3 +71,6 @@ lobsters_detailed <- lobsters %>%
          
 lobsters_detailed %>%
   select(date, site, size_m)
+```
+
+
